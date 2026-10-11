@@ -3,590 +3,189 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TrendDeck: every brand, every account, every trend. One deck.</title>
+    <title>TrendDeck. Every trend, dealt to you.</title>
     <meta
       name="description"
-      content="TrendDeck is an open source marketing desktop for creators. Every brand gets its own workspace with every account logged in at once, what's rising in your niche, and a chat pane that turns trends into posts."
+      content="TrendDeck is a free, open source marketing desktop for creators. Every brand, every account and every trend in one deck."
     />
     <meta name="theme-color" content="#0E0E10" />
-    <meta property="og:type" content="website" />
     <meta property="og:title" content="TrendDeck" />
-    <meta property="og:description" content="Every brand, every account, every trend. One deck." />
+    <meta property="og:description" content="Every trend, dealt to you." />
     <meta property="og:image" content="https://joshwright22.github.io/TrendDeck-Web/assets/banner.png" />
-    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
     <script>
       document.documentElement.classList.add('js');
     </script>
+    <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
-    <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
-      <symbol id="spark" viewBox="0 0 16 16">
-        <path d="M8 .8l2.025 5.175L15.2 8l-5.175 2.025L8 15.2l-2.025-5.175L.8 8l5.175-2.025z" />
-      </symbol>
-      <!-- icons -->
-    </svg>
+    <svg class="sprite" aria-hidden="true"><!-- icons --></svg>
 
-    <a class="skip" href="#main">Skip to content</a>
-    <div class="table" aria-hidden="true"></div>
-
-    <header class="topbar">
-      <a class="wordmark" href="#top" aria-label="TrendDeck, back to top">
+    <header class="hero" id="top">
+      <a class="wordmark" href="https://github.com/JoshWright22/TrendDeck">
         <img src="/assets/logo.svg" alt="" width="28" height="28" />
         <span>TrendDeck</span>
       </a>
-      <nav class="topnav" aria-label="Links">
-        <a class="pill pill-sm" href="https://github.com/JoshWright22/TrendDeck">GitHub</a>
-        <a class="pill pill-sm" href="https://github.com/JoshWright22/TrendDeck/releases">Download</a>
-      </nav>
+      <div class="stage">
+        <div class="flat">
+          <img class="hero-logo" src="/assets/logo.svg" alt="TrendDeck logo" />
+        </div>
+      </div>
+      <h1 class="tagline">Every trend, dealt to you.</h1>
+      <p class="scroll-hint" aria-hidden="true">Scroll</p>
     </header>
 
-    <nav class="dots" aria-label="Cards in the hand">
-      <a href="#brands" data-dot="brands"><span class="sr">1. Brands</span></a>
-      <a href="#accounts" data-dot="accounts"><span class="sr">2. Every account at once</span></a>
-      <a href="#trends" data-dot="trends"><span class="sr">3. Trends</span></a>
-      <a href="#chat" data-dot="chat"><span class="sr">4. Chat</span></a>
-      <a href="#posting" data-dot="posting"><span class="sr">5. Posting</span></a>
-      <a href="#extras" data-dot="extras"><span class="sr">6. Also in the hand</span></a>
-    </nav>
-
-    <div class="deck" aria-hidden="true"><i></i><i></i><i></i></div>
-
-    <main id="main">
-      <section class="hero" id="top">
-        <div class="floaters" aria-hidden="true">
-          <div class="floater f1"><div class="bob"><div class="pcard" data-tilt>
-            <svg class="spark tl"><use href="#spark" /></svg>
-            <svg class="logo"><use href="#i-youtube" /></svg>
-            <svg class="spark br"><use href="#spark" /></svg>
-          </div></div></div>
-          <div class="floater f2"><div class="bob"><div class="pcard suit-pink" data-tilt>
-            <svg class="spark tl"><use href="#spark" /></svg>
-            <svg class="logo"><use href="#i-instagram" /></svg>
-            <svg class="spark br"><use href="#spark" /></svg>
-          </div></div></div>
-          <div class="floater f3"><div class="bob"><div class="pcard suit-yellow" data-tilt>
-            <svg class="spark tl"><use href="#spark" /></svg>
-            <svg class="logo"><use href="#i-reddit" /></svg>
-            <svg class="spark br"><use href="#spark" /></svg>
-          </div></div></div>
-          <div class="floater f4"><div class="bob"><div class="pcard" data-tilt>
-            <svg class="spark tl"><use href="#spark" /></svg>
-            <b class="mono-logo">Codex</b>
-            <svg class="spark br"><use href="#spark" /></svg>
-          </div></div></div>
-          <div class="floater f5"><div class="bob"><div class="pcard suit-yellow" data-tilt>
-            <svg class="spark tl"><use href="#spark" /></svg>
-            <svg class="logo"><use href="#i-tiktok" /></svg>
-            <svg class="spark br"><use href="#spark" /></svg>
-          </div></div></div>
-          <div class="floater f6"><div class="bob"><div class="pcard" data-tilt>
-            <svg class="spark tl"><use href="#spark" /></svg>
-            <svg class="logo"><use href="#i-x" /></svg>
-            <svg class="spark br"><use href="#spark" /></svg>
-          </div></div></div>
-          <div class="floater f7"><div class="bob"><div class="pcard is-teal" data-tilt>
-            <svg class="spark tl"><use href="#spark" /></svg>
-            <svg class="logo"><use href="#i-claudecode" /></svg>
-            <svg class="spark br"><use href="#spark" /></svg>
-          </div></div></div>
-          <div class="floater f8"><div class="bob"><div class="pcard suit-pink" data-tilt>
-            <svg class="spark tl"><use href="#spark" /></svg>
-            <svg class="logo"><use href="#i-google" /></svg>
-            <svg class="spark br"><use href="#spark" /></svg>
-          </div></div></div>
-        </div>
-
-        <div class="hero-text">
-          <h1>
-            <span>Every brand,</span> <span>every account,</span> <span>every trend.</span>
-            <span class="one">One deck.<svg class="spark" aria-hidden="true"><use href="#spark" /></svg></span>
-          </h1>
-          <p class="lede">
-            Works with the sub you already pay for. Claude Code, Codex, Cursor, Grok Build, OpenCode, Antigravity, Qwen
-            Code or Kimi.
-          </p>
-          <a class="pill pill-big" href="https://github.com/JoshWright22/TrendDeck/releases">Download for Windows</a>
-          <a class="grab" href="https://github.com/JoshWright22/TrendDeck">Grab the code</a>
-        </div>
-      </section>
-
-      <section class="shot" id="app">
-        <div class="shot-frame" data-deal-in>
-          <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
-          <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
-          <div
-            class="app"
-            role="img"
-            aria-label="A mock of the TrendDeck window. Brands down the left side, the Trends dashboard in the middle and chat docked on the right."
-          >
-            <div class="app-title" aria-hidden="true">
-              <img src="/assets/logo.svg" alt="" width="14" height="14" />
-              <span>TrendDeck</span>
-              <i></i><i></i><i></i>
-            </div>
-            <div class="app-rail" aria-hidden="true">
-              <span class="app-brand">PF</span>
-              <span class="app-brand is-on">LL</span>
-              <span class="app-brand">TM</span>
-              <span class="app-brand add">+</span>
-            </div>
-            <div class="app-main" aria-hidden="true">
-              <div class="app-tabs">
-                <span class="is-on"><svg class="spark"><use href="#spark" /></svg>Trends</span>
-                <span><svg class="logo"><use href="#i-reddit" /></svg>Reddit</span>
-                <span><svg class="logo"><use href="#i-x" /></svg>X</span>
-                <span><svg class="logo"><use href="#i-instagram" /></svg>Instagram</span>
-                <span><svg class="logo"><use href="#i-tiktok" /></svg>TikTok</span>
-                <span><svg class="logo"><use href="#i-youtube" /></svg>YouTube</span>
-              </div>
-              <div class="app-dash">
-                <p class="app-head"><b>Trends</b><span>Loaf Lab, home baking</span><em>Last 6 weeks</em></p>
-                <div class="app-chart">
-                  <svg viewBox="0 0 100 40" preserveAspectRatio="none">
-                    <polyline points="2,34 21,32 40,31 59,27 78,25 97,22" />
-                    <polyline points="2,30 21,31 40,26 59,24 78,19 97,15" />
-                    <polyline class="hot" points="2,36 21,33 40,28 59,21 78,15 97,11" />
-                  </svg>
-                  <i class="app-hot"></i>
-                  <b class="app-chip">+212</b>
-                </div>
-                <ol class="app-feed">
-                  <li class="hot">
-                    <i>1</i><span>Sourdough discard crackers</span><svg class="logo"><use href="#i-tiktok" /></svg><b>+212</b>
-                  </li>
-                  <li>
-                    <i>2</i><span>Brown butter everything</span><svg class="logo"><use href="#i-youtube" /></svg><b>+96</b>
-                  </li>
-                  <li>
-                    <i>3</i><span>Focaccia gardens</span><svg class="logo"><use href="#i-reddit" /></svg><b>+58</b>
-                  </li>
-                  <li>
-                    <i>4</i><span>Overnight no-knead loaves</span><svg class="logo"><use href="#i-youtube" /></svg><b>+41</b>
-                  </li>
-                </ol>
-              </div>
-            </div>
-            <div class="app-chat" aria-hidden="true">
-              <p class="app-head"><b>Chat</b><em>Claude Code</em></p>
-              <div class="app-msgs">
-                <p class="me">Discard crackers are up 212. Give me a hook.</p>
-                <p class="bot">Stop throwing out your discard. These take 20 minutes.</p>
-                <p class="me">Now the caption.</p>
-                <p class="bot">One bowl, one pan, zero waste. Recipe is pinned.</p>
-              </div>
-              <p class="app-input"><span>Ask about a trend</span><i></i></p>
-            </div>
-          </div>
-        </div>
-        <p class="fine">A mock for now. Trends and chat are still being built and this is where they're headed.</p>
-      </section>
-
-      <div class="story">
-      <!-- 1 -->
-      <section class="deal" id="brands" data-step="brands">
-        <div class="deal-text">
-          <p class="kicker"><span class="num">1 / 6</span><span class="tag">In the app now</span></p>
-          <h2>One brand, one card.</h2>
-          <p>
-            Each brand has its own logins, niche keywords and recommendations. Switching is one click, and nothing
-            follows you across.
-          </p>
-          <p class="try">Pick a card to switch brands.</p>
-        </div>
-        <div class="slot">
-          <article class="card" data-card="brands" aria-label="Brands">
-            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
-            <div class="card-face">
-              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
-              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
-              <h3 class="card-head"><span class="rank">1</span>Brands</h3>
-              <div class="fan" role="group" aria-label="Your brands">
-                <button type="button" data-brand="pixel" aria-pressed="false"><b>PF</b><span>Pixel Forge</span></button>
-                <button type="button" data-brand="loaf" aria-pressed="true"><b>LL</b><span>Loaf Lab</span></button>
-                <button type="button" data-brand="trail" aria-pressed="false"><b>TM</b><span>Trail Mutt</span></button>
-              </div>
-              <div class="brand-panels" aria-live="polite">
-                <div class="brand-panel" data-panel="pixel" hidden>
-                  <p class="brand-name">Pixel Forge <span>indie games</span></p>
-                  <ul class="accts">
-                    <li><i class="site"><svg class="logo"><use href="#i-youtube" /></svg></i><span>YouTube</span><em>@pixelforge</em></li>
-                    <li><i class="site"><svg class="logo"><use href="#i-x" /></svg></i><span>X</span><em>@pixelforge</em></li>
-                    <li><i class="site"><svg class="logo"><use href="#i-reddit" /></svg></i><span>Reddit</span><em>u/pixel_forge</em></li>
-                    <li><i class="site"><svg class="logo"><use href="#i-tiktok" /></svg></i><span>TikTok</span><em>@pixel.forge</em></li>
-                  </ul>
-                </div>
-                <div class="brand-panel" data-panel="loaf">
-                  <p class="brand-name">Loaf Lab <span>home baking</span></p>
-                  <ul class="accts">
-                    <li><i class="site"><svg class="logo"><use href="#i-instagram" /></svg></i><span>Instagram</span><em>@loaflab</em></li>
-                    <li><i class="site"><svg class="logo"><use href="#i-tiktok" /></svg></i><span>TikTok</span><em>@loaf.lab</em></li>
-                    <li><i class="site"><svg class="logo"><use href="#i-youtube" /></svg></i><span>YouTube</span><em>@loaflabbakes</em></li>
-                    <li><i class="site"><svg class="logo"><use href="#i-reddit" /></svg></i><span>Reddit</span><em>u/loaflab</em></li>
-                  </ul>
-                </div>
-                <div class="brand-panel" data-panel="trail" hidden>
-                  <p class="brand-name">Trail Mutt <span>hiking with dogs</span></p>
-                  <ul class="accts">
-                    <li><i class="site"><svg class="logo"><use href="#i-instagram" /></svg></i><span>Instagram</span><em>@trailmutt</em></li>
-                    <li><i class="site"><svg class="logo"><use href="#i-youtube" /></svg></i><span>YouTube</span><em>@trailmutt</em></li>
-                    <li><i class="site"><svg class="logo"><use href="#i-x" /></svg></i><span>X</span><em>@trail_mutt</em></li>
-                    <li><i class="site"><svg class="logo"><use href="#i-tiktok" /></svg></i><span>TikTok</span><em>@trailmutt.co</em></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+    <main>
+      <section class="section" id="features">
+        <h2 class="deal">Everything in one deck.</h2>
+        <div class="grid">
+          <article class="feature suit-indigo wide deal">
+            <svg class="glyph"><use href="#i-discord" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Brands</h3>
+            <p>One click between every brand you run.</p>
+          </article>
+          <article class="feature suit-pink deal">
+            <svg class="glyph"><use href="#i-instagram" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Accounts</h3>
+            <p>Every login stays logged in, nothing mixes.</p>
+          </article>
+          <article class="feature suit-yellow deal">
+            <svg class="glyph"><use href="#i-reddit" /></svg>
+            <span class="soon">Soon</span>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Trends</h3>
+            <p>What's rising in your niche, ranked.</p>
+          </article>
+          <article class="feature suit-teal wide deal">
+            <svg class="glyph"><use href="#i-openai" /></svg>
+            <span class="soon">Soon</span>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Chat</h3>
+            <p>Your own AI, with your brand as context.</p>
+          </article>
+          <article class="feature suit-black wide deal">
+            <svg class="glyph"><use href="#i-x" /></svg>
+            <span class="soon">Soon</span>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Posting</h3>
+            <p>Posts go out through your own logged-in tabs.</p>
+          </article>
+          <article class="feature suit-pink deal">
+            <svg class="glyph"><use href="#i-youtube" /></svg>
+            <span class="soon">Soon</span>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Ad blocker</h3>
+            <p>Built in. Nothing to install.</p>
+          </article>
+          <article class="feature suit-yellow deal">
+            <svg class="glyph"><use href="#i-snapchat" /></svg>
+            <span class="soon">Soon</span>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Phone emulator</h3>
+            <p>For the stuff that only lives in the app.</p>
+          </article>
+          <article class="feature suit-indigo wide deal">
+            <svg class="glyph"><use href="#i-bluesky" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Fast on slow laptops</h3>
+            <p>Built on a cheap one, so it runs on yours.</p>
           </article>
         </div>
       </section>
 
-      <!-- 2 -->
-      <section class="deal" id="accounts" data-step="accounts">
-        <div class="deal-text">
-          <p class="kicker"><span class="num">2 / 6</span><span class="tag">In the app now</span></p>
-          <h2>Every account on one table.</h2>
-          <p>
-            Each brand gets its own browser session. Two brands can be logged into two different accounts on the same
-            site and they never mix.
-          </p>
-          <p class="try">Flip between two brands. Same sites, different logins.</p>
-        </div>
-        <div class="slot">
-          <article class="card" data-card="accounts" aria-label="Every account at once">
-            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
-            <div class="card-face">
-              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
-              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
-              <h3 class="card-head"><span class="rank">2</span>Every account at once</h3>
-              <div class="seg" role="group" aria-label="Brand">
-                <button type="button" class="pill pill-sm" data-set="pixel" aria-pressed="true">Pixel Forge</button>
-                <button type="button" class="pill pill-sm" data-set="loaf" aria-pressed="false">Loaf Lab</button>
-              </div>
-              <div aria-live="polite">
-                <ul class="tiles" data-tiles="pixel">
-                  <li><i class="site"><svg class="logo"><use href="#i-reddit" /></svg></i><b>Reddit</b><span class="state on">u/pixel_forge</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-x" /></svg></i><b>X</b><span class="state on">@pixelforge</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-instagram" /></svg></i><b>Instagram</b><span class="state">logged out</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-tiktok" /></svg></i><b>TikTok</b><span class="state on">@pixel.forge</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-youtube" /></svg></i><b>YouTube</b><span class="state on">@pixelforge</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-youtube" /></svg></i><b>YT Studio</b><span class="state on">@pixelforge</span></li>
-                </ul>
-                <ul class="tiles" data-tiles="loaf" hidden>
-                  <li><i class="site"><svg class="logo"><use href="#i-reddit" /></svg></i><b>Reddit</b><span class="state on">u/loaflab</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-x" /></svg></i><b>X</b><span class="state">logged out</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-instagram" /></svg></i><b>Instagram</b><span class="state on">@loaflab</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-tiktok" /></svg></i><b>TikTok</b><span class="state on">@loaf.lab</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-youtube" /></svg></i><b>YouTube</b><span class="state on">@loaflabbakes</span></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-youtube" /></svg></i><b>YT Studio</b><span class="state on">@loaflabbakes</span></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- 3 -->
-      <section class="deal" id="trends" data-step="trends">
-        <div class="deal-text">
-          <p class="kicker"><span class="num">3 / 6</span><span class="tag next">Coming next</span></p>
-          <h2>See it rise before it peaks.</h2>
-          <p>
-            One ranked feed of what's rising in your niche across Reddit, YouTube, Google Trends and TikTok. You get
-            the topics worth playing, not ten tabs of guessing.
-          </p>
-          <p class="try">Hover or tap a point for its growth score.</p>
-        </div>
-        <div class="slot">
-          <article class="card suit-teal" data-card="trends" aria-label="Trends">
-            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
-            <div class="card-face">
-              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
-              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
-              <h3 class="card-head"><span class="rank">3</span>Trends <small>desk setups, last 6 weeks</small></h3>
-              <div class="chart" data-chart></div>
-              <ol class="ranked">
-                <li class="hot"><span>Cozy desk setups</span><b>+212</b></li>
-                <li><span>Budget keyboards</span><b>+96</b></li>
-                <li><span>Cable management</span><b>+58</b></li>
-              </ol>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- 4 -->
-      <section class="deal" id="chat" data-step="chat">
-        <div class="deal-text">
-          <p class="kicker"><span class="num">4 / 6</span><span class="tag next">Coming next</span></p>
-          <h2>Turn a trend into a post.</h2>
-          <p>
-            Ask for ideas, outlines, titles and posts. Chat already knows your brand and what's trending, and it runs
-            on the subscriptions you already pay for.
-          </p>
-          <p class="try">Watch one trend become a title and a post.</p>
-        </div>
-        <div class="slot">
-          <article class="card" data-card="chat" aria-label="Chat">
-            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
-            <div class="card-face">
-              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
-              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
-              <h3 class="card-head"><span class="rank">4</span>Chat</h3>
-              <div class="chatlog" data-chat>
-                <p class="msg me">Cozy desk setups are up 212. Give me a video title.</p>
-                <p class="msg bot">I rebuilt my desk for $50 and it beats my $900 one</p>
-                <p class="msg me">Good. Now the post.</p>
-                <p class="msg bot">
-                  Spent $50 and one Saturday on my desk. Before and after drops at 6. Tell me which side wins.
-                </p>
-              </div>
-              <button type="button" class="pill pill-sm replay" data-replay>Deal it again</button>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- 5 -->
-      <section class="deal" id="posting" data-step="posting">
-        <div class="deal-text">
-          <p class="kicker"><span class="num">5 / 6</span><span class="tag next">Coming next</span></p>
-          <h2>Write it once. Play it everywhere.</h2>
-          <p>
-            TrendDeck posts for you through your logged-in tabs, or through official APIs if you'd rather. One draft
-            goes out to every platform you pick.
-          </p>
-          <p class="try">Hit post and watch the draft go round.</p>
-        </div>
-        <div class="slot">
-          <article class="card suit-yellow" data-card="posting" aria-label="Posting">
-            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
-            <div class="card-face">
-              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
-              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
-              <h3 class="card-head"><span class="rank">5</span>Posting</h3>
-              <div class="post-stage" data-post>
-                <div class="draft">
-                  <b>Draft</b>
-                  <span>I rebuilt my desk for $50</span>
-                  <i></i><i></i><i></i>
-                </div>
-                <ul class="targets">
-                  <li><i class="site"><svg class="logo"><use href="#i-x" /></svg></i><span>X</span><svg class="spark win"><use href="#spark" /></svg></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-instagram" /></svg></i><span>Instagram</span><svg class="spark win"><use href="#spark" /></svg></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-tiktok" /></svg></i><span>TikTok</span><svg class="spark win"><use href="#spark" /></svg></li>
-                  <li><i class="site"><svg class="logo"><use href="#i-youtube" /></svg></i><span>YouTube</span><svg class="spark win"><use href="#spark" /></svg></li>
-                </ul>
-                <p class="post-status" aria-live="polite" data-post-status>Ready for 4 platforms</p>
-                <button type="button" class="pill pill-teal pill-sm" data-post-go>Post it</button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- 6 -->
-      <section class="deal" id="extras" data-step="extras">
-        <div class="deal-text">
-          <p class="kicker"><span class="num">6 / 6</span><span class="tag">Some now, some next</span></p>
-          <h2>Also in the hand.</h2>
-          <p>Four more cards you didn't ask for and will end up using every day.</p>
-          <p class="try">Flip each one over.</p>
-        </div>
-        <div class="slot">
-          <article class="card" data-card="extras" aria-label="Also in the hand">
-            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
-            <div class="card-face">
-              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
-              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
-              <h3 class="card-head"><span class="rank">6</span>Also in the hand</h3>
-              <div class="minis">
-                <button type="button" class="mini" aria-pressed="false">
-                  <span class="mini-front"><svg class="spark"><use href="#spark" /></svg><b>Ad blocker</b></span>
-                  <span class="mini-back">Built in. No extension to hunt down and install.</span>
-                </button>
-                <button type="button" class="mini" aria-pressed="false">
-                  <span class="mini-front"><svg class="spark"><use href="#spark" /></svg><b>Phone emulator</b></span>
-                  <span class="mini-back">For the features sites only put in their apps. No phone needed.</span>
-                </button>
-                <button type="button" class="mini" aria-pressed="false">
-                  <span class="mini-front"><svg class="spark"><use href="#spark" /></svg><b>Fast on slow laptops</b></span>
-                  <span class="mini-back">Made to stay quick on a cheap laptop. No waiting on it.</span>
-                </button>
-                <button type="button" class="mini" aria-pressed="false">
-                  <span class="mini-front"><svg class="spark"><use href="#spark" /></svg><b>Local first</b></span>
-                  <span class="mini-back">Everything is saved on your computer. No account, no server.</span>
-                </button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-      </div>
-
-      <section class="sec" id="agents">
-        <p class="kicker"><svg class="spark"><use href="#spark" /></svg><span class="num">No new bill</span></p>
-        <h2>Bring your own sub.</h2>
-        <p class="lede">
-          Chat runs on the subscription you already pay for. If one of these is set up on your computer, TrendDeck can
-          use it.
-        </p>
-        <ul class="agents">
-          <li class="agent" data-deal-in>
-            <svg class="spark tl" aria-hidden="true"><use href="#spark" /></svg>
-            <svg class="logo" aria-hidden="true"><use href="#i-claudecode" /></svg>
-            <b>Claude Code</b>
+      <section class="section" id="agents">
+        <h2 class="deal">Bring your own AI.</h2>
+        <p class="lead deal">It runs on the subscription you already pay for.</p>
+        <div class="agents">
+          <article class="agent suit-yellow deal">
+            <svg class="glyph"><use href="#i-claude" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Claude Code</h3>
             <code>claude auth login</code>
-          </li>
-          <li class="agent" data-deal-in>
-            <svg class="spark tl" aria-hidden="true"><use href="#spark" /></svg>
-            <span class="mono-logo" aria-hidden="true">Cx</span>
-            <b>Codex</b>
+          </article>
+          <article class="agent suit-teal deal">
+            <svg class="glyph"><use href="#i-openai" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Codex</h3>
             <code>codex login</code>
-          </li>
-          <li class="agent" data-deal-in>
-            <svg class="spark tl" aria-hidden="true"><use href="#spark" /></svg>
-            <svg class="logo" aria-hidden="true"><use href="#i-cursor" /></svg>
-            <b>Cursor</b>
+          </article>
+          <article class="agent suit-black deal">
+            <svg class="glyph"><use href="#i-cursor" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Cursor</h3>
             <code>agent login</code>
-          </li>
-          <li class="agent" data-deal-in>
-            <svg class="spark tl" aria-hidden="true"><use href="#spark" /></svg>
-            <span class="mono-logo" aria-hidden="true">Gk</span>
-            <b>Grok Build</b>
+          </article>
+          <article class="agent suit-black deal">
+            <svg class="glyph"><use href="#i-x" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Grok Build</h3>
             <code>grok login</code>
-          </li>
-          <li class="agent" data-deal-in>
-            <svg class="spark tl" aria-hidden="true"><use href="#spark" /></svg>
-            <svg class="logo" aria-hidden="true"><use href="#i-opencode" /></svg>
-            <b>OpenCode</b>
+          </article>
+          <article class="agent suit-indigo deal">
+            <svg class="glyph"><use href="#i-opencode" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>OpenCode</h3>
             <code>opencode auth login</code>
-          </li>
-          <li class="agent" data-deal-in>
-            <svg class="spark tl" aria-hidden="true"><use href="#spark" /></svg>
-            <svg class="logo" aria-hidden="true"><use href="#i-google" /></svg>
-            <b>Antigravity</b>
+          </article>
+          <article class="agent suit-teal deal">
+            <svg class="glyph"><use href="#i-google" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Antigravity</h3>
             <code>sign in with Google</code>
-          </li>
-          <li class="agent" data-deal-in>
-            <svg class="spark tl" aria-hidden="true"><use href="#spark" /></svg>
-            <svg class="logo" aria-hidden="true"><use href="#i-qwen" /></svg>
-            <b>Qwen Code</b>
+          </article>
+          <article class="agent suit-indigo deal">
+            <svg class="glyph"><use href="#i-qwen" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Qwen Code</h3>
             <code>qwen</code>
-          </li>
-          <li class="agent" data-deal-in>
-            <svg class="spark tl" aria-hidden="true"><use href="#spark" /></svg>
-            <svg class="logo" aria-hidden="true"><use href="#i-kimi" /></svg>
-            <b>Kimi</b>
+          </article>
+          <article class="agent suit-black deal">
+            <svg class="glyph"><use href="#i-kimi" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Kimi</h3>
             <code>kimi</code>
-          </li>
-          <li class="agent any" data-deal-in>
-            <svg class="spark tl" aria-hidden="true"><use href="#spark" /></svg>
-            <svg class="spark big" aria-hidden="true"><use href="#spark" /></svg>
-            <b>Any CLI or API</b>
+          </article>
+          <article class="agent suit-pink deal">
+            <svg class="glyph"><use href="#i-gnubash" /></svg>
+            <svg class="spark"><use href="#i-spark" /></svg>
+            <h3>Any CLI or API</h3>
             <code>Settings &gt; Agents</code>
-          </li>
-        </ul>
-        <p class="fine">
-          Anything else plugs in too. Give it a command to run, or an OpenAI-compatible API URL and key. Everything but
-          chat works without one.
-        </p>
-      </section>
-
-      <section class="feat" id="sites">
-        <div class="feat-mock" data-deal-in aria-hidden="true">
-          <div class="mock">
-            <svg class="spark corner tl"><use href="#spark" /></svg>
-            <p class="mock-head">Site tabs <span>Loaf Lab</span></p>
-            <ul class="mock-tabs">
-              <li><svg class="logo"><use href="#i-reddit" /></svg>Reddit</li>
-              <li><svg class="logo"><use href="#i-x" /></svg>X</li>
-              <li><svg class="logo"><use href="#i-instagram" /></svg>Instagram</li>
-              <li><svg class="logo"><use href="#i-tiktok" /></svg>TikTok</li>
-              <li><svg class="logo"><use href="#i-youtube" /></svg>YouTube</li>
-              <li><svg class="logo"><use href="#i-youtube" /></svg>YT Studio</li>
-              <li>vidIQ</li>
-              <li>1of10</li>
-              <li class="is-new"><svg class="spark"><use href="#spark" /></svg>My shop</li>
-            </ul>
-            <div class="mock-form">
-              <p><span>Name</span><b>My shop</b></p>
-              <p><span>URL</span><b>https://myshop.example</b></p>
-              <i class="pill pill-teal pill-sm">Add site</i>
-            </div>
-          </div>
-        </div>
-        <div class="feat-text">
-          <h2>Any site gets a tab.</h2>
-          <p>The usual ones are there when you open it. The rest take a name and a URL.</p>
-          <ul class="checks">
-            <li><svg class="spark" aria-hidden="true"><use href="#spark" /></svg>Reddit, X, Instagram, TikTok and YouTube to start</li>
-            <li><svg class="spark" aria-hidden="true"><use href="#spark" /></svg>YouTube Studio, vidIQ and 1of10 too</li>
-            <li><svg class="spark" aria-hidden="true"><use href="#spark" /></svg>Add any site with a name and a URL</li>
-            <li><svg class="spark" aria-hidden="true"><use href="#spark" /></svg>Drag to reorder</li>
-          </ul>
+          </article>
         </div>
       </section>
 
-      <section class="feat flip" id="local">
-        <div class="feat-mock" data-deal-in aria-hidden="true">
-          <div class="mock">
-            <svg class="spark corner tl"><use href="#spark" /></svg>
-            <p class="mock-head">Your computer <span>no server</span></p>
-            <pre class="mock-tree"><b>%APPDATA%\TrendDeck</b>
-  trenddeck.json   <i>brands and sites</i>
-  Partitions\
-    pixel-forge\   <i>logins</i>
-    loaf-lab\      <i>logins</i>
-    trail-mutt\    <i>logins</i></pre>
-          </div>
+      <section class="section" id="download">
+        <h2 class="deal">Deal yourself in.</h2>
+        <p class="lead deal">Free and open source. No account.</p>
+        <div class="actions deal">
+          <a class="pill" href="https://github.com/JoshWright22/TrendDeck/releases/latest">Download for Windows</a>
+          <a class="text-link" href="https://github.com/JoshWright22/TrendDeck">
+            <svg class="glyph"><use href="#i-github" /></svg>
+            View on GitHub
+          </a>
         </div>
-        <div class="feat-text">
-          <h2>It all stays on your machine.</h2>
-          <p>No sign up to get in and nothing sent off to a server. Your brands and logins are files in one folder.</p>
-          <ul class="checks">
-            <li><svg class="spark" aria-hidden="true"><use href="#spark" /></svg>No account, no server</li>
-            <li><svg class="spark" aria-hidden="true"><use href="#spark" /></svg>Brands and sites in one json file</li>
-            <li><svg class="spark" aria-hidden="true"><use href="#spark" /></svg>Logins in one folder per brand</li>
-            <li><svg class="spark" aria-hidden="true"><use href="#spark" /></svg>Delete a brand and its logins go with it</li>
-          </ul>
+        <div class="terminal deal">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>or run it from source, with Node.js 22.12 or newer</span></div>
+          <pre><code><b>$</b> git clone https://github.com/JoshWright22/TrendDeck.git
+<b>$</b> cd TrendDeck
+<b>$</b> npm install
+<b>$</b> npm run dev</code></pre>
         </div>
-      </section>
-
-      <section class="sec" id="fork">
-        <p class="kicker"><svg class="spark"><use href="#spark" /></svg><span class="num">MIT and fully open</span></p>
-        <h2>Don't like something? Fork it.</h2>
-        <p class="lede">
-          All of it is on GitHub. Change what bugs you and build the one you want. You need
-          <a href="https://nodejs.org">Node.js</a> 22.12 or newer.
-        </p>
-        <div class="install" data-deal-in>
-          <div class="install-bar">
-            <i></i><i></i><i></i>
-            <span>Terminal</span>
-            <button type="button" class="pill pill-sm" data-copy>Copy</button>
-          </div>
-          <pre><code data-install>git clone https://github.com/JoshWright22/TrendDeck.git
-cd TrendDeck
-npm install
-npm run dev</code></pre>
-        </div>
-        <p class="fine">The first npm install also downloads Electron, so it takes a minute.</p>
-        <a class="pill" href="https://github.com/JoshWright22/TrendDeck/fork">Fork it on GitHub</a>
       </section>
     </main>
 
-    <footer class="foot">
-      <a class="wordmark" href="#top" aria-label="TrendDeck, back to top">
+    <footer class="footer">
+      <a class="wordmark" href="#top">
         <img src="/assets/logo.svg" alt="" width="28" height="28" />
         <span>TrendDeck</span>
       </a>
-      <p class="foot-links">
+      <nav>
         <a href="https://github.com/JoshWright22/TrendDeck">GitHub</a>
         <a href="https://github.com/JoshWright22/TrendDeck/blob/main/LICENSE">MIT</a>
-        <button type="button" class="linkish" data-mode-toggle hidden>Lite mode</button>
-      </p>
+        <button class="lite-switch" type="button" hidden>Lite mode: off</button>
+      </nav>
     </footer>
-
-    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
