@@ -1,6 +1,7 @@
 import './style.css';
 import { pickMode, storeMode } from './mode';
 import { setupFeatures } from './features';
+import { setupHero } from './hero';
 import type { TableScene } from './scene';
 
 const root = document.documentElement;
@@ -15,8 +16,8 @@ const dotFor = (name: string) => dots.find((dot) => dot.dataset.dot === name);
 let scene: TableScene | null = null;
 let dealt = 0;
 
-const DEAL_MS = 430;
-const FLIP_MS = 500;
+const DEAL_MS = 330;
+const FLIP_MS = 400;
 
 // lite mode deal: the html card itself slides in from the deck face down, then flips
 function dealLite(card: HTMLElement): Promise<void> {
@@ -34,7 +35,13 @@ function dealLite(card: HTMLElement): Promise<void> {
         transform: `translate(${dx}px, ${dy}px) rotate(-24deg) rotateY(180deg) scale(${scale})`,
         easing: 'cubic-bezier(0.3, 1.3, 0.6, 1)',
       },
-      { transform: 'translate(0, 0) rotate(0deg) rotateY(180deg) scale(1)', offset: landed, easing: 'ease-in-out' },
+      { transform: 'translate(0, 0) rotate(0deg) rotateY(180deg) scale(1)', offset: landed, easing: 'ease-in' },
+      // the flip pops bigger at the halfway point
+      {
+        transform: 'translate(0, 0) rotate(0deg) rotateY(90deg) scale(1.09)',
+        offset: landed + (1 - landed) / 2,
+        easing: 'ease-out',
+      },
       { transform: 'translate(0, 0) rotate(0deg) rotateY(0deg) scale(1)' },
     ],
     { duration: DEAL_MS + FLIP_MS },
@@ -93,6 +100,38 @@ function watchCards(): void {
     { rootMargin: '-50% 0px -50% 0px' },
   );
   document.querySelectorAll('.deal').forEach((section) => current.observe(section));
+
+  // the dots and the deck only show while the story is on screen
+  const story = document.querySelector('.story');
+  if (story) {
+    new IntersectionObserver(([entry]) => document.body.classList.toggle('in-story', entry.isIntersecting), {
+      rootMargin: '-30% 0px -30% 0px',
+    }).observe(story);
+  }
+}
+
+// the app mock, agent cards and the rest get dealt in as they scroll into view
+function watchDealIns(): void {
+  const items = Array.from(document.querySelectorAll<HTMLElement>('[data-deal-in]'));
+  if (!('IntersectionObserver' in window)) {
+    items.forEach((item) => item.classList.add('is-in'));
+    return;
+  }
+  const seen = new IntersectionObserver(
+    (entries) => {
+      // cards that show up together go out one after another
+      let i = 0;
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        seen.unobserve(entry.target);
+        const item = entry.target as HTMLElement;
+        item.style.setProperty('--i', String(i++));
+        item.classList.add('is-in');
+      }
+    },
+    { threshold: 0.15 },
+  );
+  items.forEach((item) => seen.observe(item));
 }
 
 function goLite(): void {
@@ -107,8 +146,7 @@ function loadScene(): void {
   const start = async () => {
     try {
       const { createScene } = await import('./scene');
-      const hand = document.querySelector<HTMLImageElement>('.hand')!;
-      scene = createScene({ hand, watchFrames: !info.forced, onSlow: goLite });
+      scene = createScene({ watchFrames: !info.forced, onSlow: goLite });
       root.classList.add('full');
     } catch {
       goLite();
@@ -134,5 +172,7 @@ function modeToggle(): void {
 
 if (info.mode === 'full') loadScene();
 else root.classList.add('lite');
+setupHero(info.reducedMotion);
 watchCards();
+watchDealIns();
 modeToggle();

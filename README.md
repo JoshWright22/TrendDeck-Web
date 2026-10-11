@@ -4,7 +4,14 @@
 
 The landing site for [TrendDeck](https://github.com/JoshWright22/TrendDeck), the open source marketing desktop for creators.
 
-It's one scroll story called "dealt a hand". The page opens on the felt table with the logo's hand of cards, then a dealer deals six cards as you scroll. Each one flips over to show a feature you can poke at: brands, every account at once, trends, chat, posting, and the smaller stuff. It ends on "Play your hand" with the install steps.
+The page goes top to bottom like this:
+
+1. Hero. The headline and the download button, with playing cards floating round it that carry the platform and agent logos. They bob slowly and lean toward the cursor.
+2. A mock of the app window, dealt onto the felt as one big card.
+3. The "dealt a hand" story. A dealer deals six cards as you scroll and each one flips over to show a feature you can poke at: brands, every account at once, trends, chat, posting, and the smaller stuff.
+4. "Bring your own sub", a card for each agent with its login command.
+5. Two feature sections, site tabs and local data.
+6. "Don't like something? Fork it." with the run from source steps.
 
 Colors, type, cards, sparks and motion all follow the app's [brand guide](https://github.com/JoshWright22/TrendDeck/blob/main/docs/BRAND.md).
 
@@ -30,18 +37,23 @@ index.html          all the copy and every card, as plain html
 src/style.css       the whole look, plus the css card deal used in lite mode
 src/main.ts         picks the mode, deals cards as they scroll into view, step dots
 src/mode.ts         full or lite
-src/features.ts     the small interaction on each card
-src/scene.ts        the 3d table: the logo hand and the flying cards
+src/hero.ts         the spring tilt on the floating hero cards
+src/features.ts     the small interaction on each story card
+src/scene.ts        the 3d table: the flying story cards
+vite.config.ts      also builds the logo sprite
 public/assets       logo and banner, copied from the app repo
+DECISIONS.md        calls made along the way
 ```
 
 All the text is real html, so it reads fine with no WebGL and no script.
 
+Platform and agent logos come from [simple-icons](https://simpleicons.org). The list is at the top of `vite.config.ts` and the build puts them into the page as one svg sprite, so add a slug there to use a new one.
+
 ## Full and lite mode
 
-Full mode draws the hero hand and the dealt cards in WebGL. Three.js is its own chunk and only loads after the first paint, so the first load is the html, one css file, a small script and the fonts.
+Full mode draws the dealt story cards in WebGL. Three.js is its own chunk and only loads after the first paint, so the first load is the html, one css file, a small script and the fonts.
 
-Lite mode has the same content with css 3D cards and no WebGL. You get it when:
+Lite mode has the same content with css 3D cards and no WebGL, and the hero cards don't bob. You get it when:
 
 - you ask for reduced motion (cards also stop animating)
 - WebGL is missing or only runs in software
@@ -58,4 +70,4 @@ Pushing to `main` runs `.github/workflows/pages.yml`, which builds and deploys t
 
 ## License
 
-MIT, see [LICENSE](LICENSE). Fonts are Inter and Inter Tight, bundled from `@fontsource` under the SIL Open Font License.
+MIT, see [LICENSE](LICENSE). Fonts are Inter and Inter Tight, bundled from `@fontsource` under the SIL Open Font License. The logos belong to their owners.

@@ -193,6 +193,8 @@ function posting(card: HTMLElement, reduced: boolean): Reveal {
     busy = true;
     go.disabled = true;
     for (const target of targets) target.classList.remove('won');
+    stage.classList.remove('is-won');
+    card.classList.remove('is-won');
     status.textContent = 'Posting...';
 
     let posted = 0;
@@ -218,6 +220,8 @@ function posting(card: HTMLElement, reduced: boolean): Reveal {
       if (!reduced) await wait(140);
     }
     status.textContent = `Posted to all ${targets.length}. That's a win.`;
+    stage.classList.add('is-won');
+    card.classList.add('is-won');
     go.textContent = 'Post it again';
     go.disabled = false;
     busy = false;

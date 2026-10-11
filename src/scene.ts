@@ -1,4 +1,4 @@
-// the 3d half of the table: the logo's hand in the hero and the cards the dealer throws.
+// the 3d half of the table: the cards the dealer throws.
 // it draws on a clear canvas over the page, one world unit per css pixel, so a card can
 // fly to wherever its html twin sits and hand over to it when it lands.
 
@@ -27,24 +27,21 @@ export interface TableScene {
 }
 
 interface Options {
-  hand: HTMLImageElement;
   watchFrames: boolean;
   onSlow: () => void;
 }
 
-const FELT = '#0E0E10';
 const PANEL = '#16161A';
 const WHITE = '#F2F2F4';
 const TEAL = '#00BF9C';
 const YELLOW = '#FFD814';
-const PINK = '#FA4E93';
 const INDIGO = '#3B46A4';
 
 const FOV = 30;
 const CARD_H = 1.4; // 5:7
 const THICK = 0.01;
-const DEAL_MS = 430;
-const FLIP_MS = 500;
+const DEAL_MS = 330;
+const FLIP_MS = 400;
 const FADE_MS = 200;
 
 // ---------- drawing card faces ----------
@@ -84,38 +81,6 @@ function spark(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number)
   ctx.lineTo(cx - k, cy - k);
   ctx.closePath();
   ctx.fill();
-}
-
-// one card of the logo, drawn in the logo's own units (84 x 116 with its white edge)
-function logoCard(fill: string, suit: string, withTD: boolean): Texture {
-  return paint(336, 464, (ctx) => {
-    ctx.scale(4, 4);
-    ctx.fillStyle = WHITE;
-    ctx.fillRect(0, 0, 84, 116);
-    ctx.fillStyle = fill;
-    roundRect(ctx, 4, 4, 76, 108, 10);
-    ctx.fill();
-    ctx.fillStyle = suit;
-    spark(ctx, 12, 16, 7.2);
-    spark(ctx, 72, 100, 7.2);
-    if (!withTD) return;
-    // same transform chain as the TD group in logo.svg
-    ctx.translate(-22, -8);
-    ctx.translate(64, 68);
-    ctx.scale(0.68, 0.68);
-    ctx.translate(-64, -66);
-    ctx.lineCap = 'round';
-    ctx.lineWidth = 13;
-    ctx.strokeStyle = FELT;
-    ctx.stroke(new Path2D('M30 34 H78 M50 34 V96'));
-    ctx.stroke(new Path2D('M66 96 C92 96 100 80 100 64 C100 52 96 44 88 38'));
-    ctx.beginPath();
-    ctx.arc(88, 36, 8, 0, Math.PI * 2);
-    ctx.fillStyle = YELLOW;
-    ctx.fill();
-    ctx.lineWidth = 4;
-    ctx.stroke();
-  });
 }
 
 // blank front of a feature card, matches .card-face in the css at a 360px wide card
@@ -271,65 +236,6 @@ export function createScene(options: Options): TableScene {
     return thing;
   };
 
-  // ----- the logo's hand, rebuilt from three real cards -----
-  const handParts = cardParts(14 / 84);
-  const plainBack = keep(logoCard(INDIGO, WHITE, false));
-  const handCards = [
-    { tex: plainBack, angle: 24 },
-    { tex: keep(logoCard(PINK, WHITE, false)), angle: 12 },
-    { tex: keep(logoCard(TEAL, FELT, true)), angle: 0 },
-  ].map(({ tex, angle }) => {
-    const { group, materials } = buildCard(handParts, tex, plainBack, false);
-    materials.forEach(keep);
-    // the flat offset shadow each card has in the logo
-    const shadowMat = keep(new MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.45, depthWrite: false }));
-    const shadow = new Mesh(handParts.front, shadowMat);
-    shadow.position.set(2 / 84, -3 / 84, -THICK * 2.5);
-    group.add(shadow);
-    return { group, angle: (angle * Math.PI) / 180 };
-  });
-  const handTilt = new Group();
-  const handPivot = new Group();
-  handTilt.add(handPivot);
-  handCards.forEach((card) => handPivot.add(card.group));
-  scene.add(handTilt);
-
-  const tilt = { x: 0, y: 0, tx: 0, ty: 0, lift: 0 };
-
-  // returns true while the hand is still easing toward where it should be
-  const placeHand = (): boolean => {
-    const rect = options.hand.getBoundingClientRect();
-    const onScreen = rect.width > 0 && rect.bottom > 0 && rect.top < height;
-    handTilt.visible = onScreen;
-    if (!onScreen) return false;
-
-    const unit = rect.width / 176; // logo.svg is 176 units across
-    handTilt.position.set(worldX(rect.left + rect.width / 2), worldY(rect.top + rect.height / 2), 0);
-    // cards pivot around the bottom of the hand, (64,128) in the svg, the image center is (58,66)
-    handPivot.position.set(6 * unit, -62 * unit, 0);
-
-    // scrolling away tips the hand back and pulls the cards apart
-    const away = clamp01(window.scrollY / Math.max(1, height * 0.9));
-    tilt.lift += (away - tilt.lift) * 0.2;
-    tilt.x += (tilt.tx - tilt.x) * 0.12;
-    tilt.y += (tilt.ty - tilt.y) * 0.12;
-    handTilt.rotation.set(tilt.x - tilt.lift * 0.75, tilt.y, 0);
-
-    handCards.forEach((card, i) => {
-      card.group.position.set(
-        -Math.sin(card.angle) * 62 * unit,
-        Math.cos(card.angle) * 62 * unit,
-        i * unit * (1.6 + tilt.lift * 16),
-      );
-      card.group.rotation.z = card.angle;
-      card.group.scale.set(84 * unit, (116 * unit) / CARD_H, 84 * unit);
-    });
-
-    return (
-      Math.abs(tilt.tx - tilt.x) > 0.001 || Math.abs(tilt.ty - tilt.y) > 0.001 || Math.abs(away - tilt.lift) > 0.001
-    );
-  };
-
   // ----- dealt cards -----
   const dealParts = cardParts(12 / 360);
   const backTex = keep(featureBack());
@@ -382,6 +288,8 @@ export function createScene(options: Options): TableScene {
       const u = (t - DEAL_MS) / FLIP_MS;
       z += Math.sin(Math.PI * u) * to.width * 0.3;
       group.rotation.y = Math.PI * (1 - easeInOut(u));
+      // the flip pops bigger at the halfway point
+      w *= 1 + Math.sin(Math.PI * u) * 0.09;
     } else {
       if (!flight.landedAt) {
         flight.landedAt = now;
@@ -408,7 +316,6 @@ export function createScene(options: Options): TableScene {
   let frame = 0;
   let lastTime = 0;
   let disposed = false;
-  let shown = false;
   const samples: number[] = [];
   let watching = options.watchFrames;
 
@@ -430,15 +337,10 @@ export function createScene(options: Options): TableScene {
       }
     }
 
-    const handMoving = placeHand();
     for (const flight of flights.slice()) stepFlight(flight, now);
     renderer.render(scene, camera);
 
-    if (!shown) {
-      shown = true;
-      document.documentElement.classList.add('hand-3d');
-    }
-    if (handMoving || flights.length) {
+    if (flights.length) {
       lastTime = now;
       frame = requestAnimationFrame(tick);
     } else {
@@ -449,12 +351,6 @@ export function createScene(options: Options): TableScene {
     if (!frame && !disposed) frame = requestAnimationFrame(tick);
   };
 
-  const onPointer = (event: PointerEvent) => {
-    if (event.pointerType !== 'mouse' || !handTilt.visible) return;
-    tilt.ty = (event.clientX / width - 0.5) * 0.5;
-    tilt.tx = (event.clientY / height - 0.5) * 0.36;
-    wake();
-  };
   const onResize = () => {
     resize();
     wake();
@@ -464,9 +360,7 @@ export function createScene(options: Options): TableScene {
     options.onSlow();
   };
 
-  window.addEventListener('scroll', wake, { passive: true });
   window.addEventListener('resize', onResize);
-  window.addEventListener('pointermove', onPointer, { passive: true });
   canvas.addEventListener('webglcontextlost', onLost);
 
   resize();
@@ -490,9 +384,7 @@ export function createScene(options: Options): TableScene {
       if (disposed) return;
       disposed = true;
       cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', wake);
       window.removeEventListener('resize', onResize);
-      window.removeEventListener('pointermove', onPointer);
       canvas.removeEventListener('webglcontextlost', onLost);
       // anything still in the air lands right away so no card is left unseen
       for (const flight of flights.slice()) {
@@ -500,14 +392,11 @@ export function createScene(options: Options): TableScene {
         endFlight(flight);
       }
       disposables.forEach((thing) => thing.dispose());
-      [handParts, dealParts].forEach((parts) => {
-        parts.front.dispose();
-        parts.back.dispose();
-        parts.side.dispose();
-      });
+      dealParts.front.dispose();
+      dealParts.back.dispose();
+      dealParts.side.dispose();
       renderer.dispose();
       canvas.remove();
-      document.documentElement.classList.remove('hand-3d');
     },
   };
 }
