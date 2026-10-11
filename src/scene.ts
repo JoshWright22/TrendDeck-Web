@@ -416,13 +416,14 @@ export function createScene(options: Options): TableScene {
     frame = 0;
     if (disposed) return;
 
-    // a few seconds of bad frames and the page drops to lite mode
-    if (watching && lastTime) {
+    // a second or so of bad frames and the page drops to lite mode.
+    // gaps over a quarter second are a hidden tab, not a slow gpu
+    if (watching && lastTime && now - lastTime < 250) {
       samples.push(now - lastTime);
-      if (samples.length >= 40) {
+      if (samples.length >= 20) {
         const sorted = samples.slice().sort((a, b) => a - b);
         watching = false;
-        if (sorted[20] > 45) {
+        if (sorted[10] > 45) {
           options.onSlow();
           return;
         }
