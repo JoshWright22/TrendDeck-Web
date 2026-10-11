@@ -56,9 +56,9 @@ function iconSprite(): Plugin {
   };
 }
 
-// base matches the GitHub Pages path for this repo
+// served from the root of trenddeck.app
 export default defineConfig({
-  base: '/TrendDeck-Web/',
+  base: '/',
   plugins: [iconSprite()],
   build: {
     target: 'es2020',

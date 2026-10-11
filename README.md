@@ -24,7 +24,7 @@ npm run build      # type check and build into dist/
 npm run preview    # serve the build
 ```
 
-Dev and preview both serve at `/TrendDeck-Web/`, same as the live site.
+Dev and preview both serve at `/`, same as the live site at trenddeck.app.
 
 ## How it's put together
 
@@ -65,7 +65,7 @@ The canvas pixel ratio is capped at 2 and it stops drawing when the hero is off 
 
 ## Deploying
 
-Pushing to `main` runs `.github/workflows/pages.yml`, which builds and deploys to GitHub Pages. Pages has to be set to "GitHub Actions" as the source in the repo settings. The base path `/TrendDeck-Web/` is set in `vite.config.ts`, change it there if the repo is renamed.
+The site is hosted on Cloudflare Pages at trenddeck.app. Cloudflare builds every push to `main` with `npm run build` and serves the `dist` folder. The base path `/` is set in `vite.config.ts`.
 
 ## License
 
