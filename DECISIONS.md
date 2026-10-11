@@ -1,20 +1,41 @@
 # Decisions
 
-Calls made while reworking the page, so they are easy to undo.
+Calls made while rebuilding the page, so they are easy to undo.
 
-- The download pill goes to the GitHub releases page. The app has no installer yet so that page may be empty. The fork section still has the run from source steps.
-- The hero's 3D logo hand is gone. The floating cards took its spot and two things moving behind the headline was too much. The logo is still in the top bar and footer. WebGL now only draws the dealt story cards.
-- Floating hero cards are html and css, not WebGL. They work the same in lite mode and cost no extra download.
-- The floating cards bob forever, which the brand guide says only the glow should do. The bob is slow, pauses when the hero is off screen, and is off in lite mode and with reduced motion.
-- Logos are white on dark cards, not their own brand colors, and one card is teal. The brand guide wants accents kept small.
-- simple-icons has no logo for Codex, Grok Build or Antigravity. Codex and Grok Build get lettered cards and Antigravity uses the Google mark.
-- Logos are put into index.html as an svg sprite at build time by a small plugin in vite.config.ts. No icon script ships to the browser.
-- The app screenshot is an html mock with made up brands and trends. The line under it says so, and says Trends and chat are still being built.
-- Trends, Chat and Posting keep their "Coming next" tags in the story since the app doesn't have them yet.
-- Antigravity has no login command in the app readme, so its card says "sign in with Google".
-- The two feature sections are site tabs and local data. Both are in the app now and the story cards don't cover them.
-- Deals are 330 ms and flips 400 ms now to match the brand guide. They were 430 and 500.
-- Step dots and the deck only show while the story is on screen.
-- On phones the floating cards sit in a row above and a row under the headline so they never cover the text.
-- Logo paths in index.html are /assets/... now. With %BASE_URL% the dev server doubled the base path and the logo was broken in npm run dev.
-- Added @types/node so the type check passes on vite.config.ts reading the icon files.
+## Hero
+
+- The logo is drawn inside the WebGL scene in full mode, not as an html image over it. Cards have to pass both behind and in front of it, and one canvas can't sit on both sides of an image.
+- Until the 3D orbit is ready the hero shows the same cards as flat html, placed with the same math. Lite mode and reduced motion keep those and nothing orbits. The swap waits for the deal animation to finish.
+- The inner ring has ten logos, one card each. The outer ring has the other eight twice, always on opposite sides. That is how the front never repeats a logo: one copy is in front while its twin is behind.
+- Inner: YouTube, TikTok, Claude, Gemini, Instagram, X, OpenAI, Facebook, Reddit, Discord. Outer: Bluesky, Snapchat, Threads, Pinterest, LinkedIn, Google, Ollama, Twitch.
+- The blur on the cards behind is a smaller mipmap, not a real blur pass. It costs nothing per frame.
+- simple-icons dropped LinkedIn and OpenAI. Their svgs in `src/icons` come from an older simple-icons release.
+- The mouse lean is mouse only. Phones get the orbit with no lean.
+- On tall screens the ring tips up steeper so the orbit isn't a thin strip.
+- No glow pulse. The orbit is the only thing that keeps moving.
+- Logo and banner in `public/assets` were copied again from the app repo since both changed there.
+
+## Features
+
+- Eight cards in three columns, four of them two wide, so every row is full. The mockup had a hole in row two.
+- Glyphs and colors follow the mockup where it shows them. Ad blocker is YouTube on pink, not the Google mark, since Google is a teal card in the hero. Phone emulator is Snapchat on yellow, Fast on slow laptops is Bluesky on indigo.
+- Trends, Chat, Posting, Ad blocker and Phone emulator have a small "Soon" chip. The app readme lists them as coming next and the page shouldn't say otherwise.
+- Two columns under 860 px, one under 600 px.
+
+## Agents
+
+- simple-icons has no mark for Codex, Grok Build or Antigravity. They use the OpenAI, X and Google marks.
+- Antigravity has no login command in the app readme, so its card says "sign in with Google". "Any CLI or API" points at Settings > Agents.
+- Card colors here are picked for balance in the grid, not from each logo's own color.
+- Two columns on phones, with the ninth card taking the last row.
+
+## Download
+
+- The pill goes to the app's latest release on GitHub. The app readme says there's no installer yet, so that link may land on an empty page until one is published.
+- The terminal card has the run from source steps from the app readme.
+
+## Other
+
+- Fonts are the latin subsets of Inter 400 and 500 and Inter Tight 800. Commands use the system mono font, so nothing extra downloads.
+- Springy easing uses css `linear()` where it exists and an overshoot bezier elsewhere.
+- The footer keeps the lite mode switch. It is hidden when there's nothing to switch to (no WebGL, or reduced motion).
