@@ -31,7 +31,8 @@ const ICONS = [
 ];
 
 // the four point spark from the logo, on the same 24 box as the icons
-const SPARK = 'M12 0 15.375 8.625 24 12 15.375 15.375 12 24 8.625 15.375 0 12 8.625 8.625Z';
+// corner mark on every card: a small rising line ending in a dot
+const SPARK = 'M4.79 19.19 L10.79 13.19 L8.41 10.81 L2.41 16.81ZM8.41 13.19 L12.01 16.79 L14.39 14.41 L10.79 10.81ZM14.49 16.68 L20.49 9.48 L17.91 7.32 L11.91 14.52ZM1.9200000000000002 18.0a1.68 1.68 0 1 0 3.36 0a1.68 1.68 0 1 0 -3.36 0ZM7.92 12.0a1.68 1.68 0 1 0 3.36 0a1.68 1.68 0 1 0 -3.36 0ZM11.52 15.6a1.68 1.68 0 1 0 3.36 0a1.68 1.68 0 1 0 -3.36 0ZM17.52 8.4a1.68 1.68 0 1 0 3.36 0a1.68 1.68 0 1 0 -3.36 0ZM16.68 7.2a3.12 3.12 0 1 0 6.24 0a3.12 3.12 0 1 0 -6.24 0Z';
 
 function iconPath(slug: string): string {
   // src/icons holds the ones simple-icons dropped, taken from its older releases
