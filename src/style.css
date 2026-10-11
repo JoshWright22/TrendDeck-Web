@@ -660,3 +660,68 @@ svg.spark {
     opacity: 1;
   }
 }
+
+/* text pages */
+.doc-head {
+  width: min(100% - 40px, 720px);
+  margin: 0 auto;
+  padding: 28px 0 0;
+}
+
+.doc {
+  width: min(100% - 40px, 720px);
+  margin: 0 auto;
+  padding: clamp(48px, 9vh, 96px) 0 clamp(64px, 11vh, 120px);
+  line-height: 1.6;
+}
+
+.doc h1 {
+  font: 800 clamp(34px, 5vw, 56px) / 1.05 var(--display);
+  letter-spacing: -0.04em;
+  color: var(--white);
+}
+
+.doc h2 {
+  margin-top: 44px;
+  font: 800 22px/1.2 var(--display);
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+
+.doc p,
+.doc ul {
+  margin-top: 12px;
+  color: var(--chalk);
+}
+
+.doc .lead {
+  margin-top: 18px;
+  color: var(--smoke);
+}
+
+.doc ul {
+  padding-left: 20px;
+}
+
+.doc li + li {
+  margin-top: 8px;
+}
+
+.doc a {
+  color: var(--teal);
+}
+
+.doc code {
+  font: 0.92em var(--mono);
+  color: var(--yellow);
+}
+
+.signing {
+  margin-top: 22px;
+  font-size: 13px;
+  color: var(--smoke);
+}
+
+.signing a {
+  color: inherit;
+}

@@ -65,5 +65,6 @@ export default defineConfig({
     assetsInlineLimit: 0,
     // three.js is its own lazy chunk and never part of the first load
     chunkSizeWarningLimit: 700,
+    rollupOptions: { input: { main: 'index.html', privacy: 'privacy/index.html' } },
   },
 });

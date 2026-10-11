@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy | TrendDeck</title>
+    <meta
+      name="description"
+      content="TrendDeck has no account, no server and no analytics. Your logins, chats and files stay on your computer."
+    />
+    <link rel="canonical" href="https://trenddeck.app/privacy" />
+    <meta name="theme-color" content="#0E0E10" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+    <script type="module" src="/src/privacy.ts"></script>
+  </head>
+  <body>
+    <header class="doc-head">
+      <a class="wordmark" href="/">
+        <img src="/assets/logo.svg" alt="" width="28" height="28" />
+        <span>TrendDeck</span>
+      </a>
+    </header>
+
+    <main class="doc">
+      <h1>Your data stays yours.</h1>
+      <p class="lead">
+        TrendDeck has no account, no server and no analytics. Everything it knows sits in one folder on your computer,
+        and we never see any of it.
+      </p>
+
+      <h2>What we collect</h2>
+      <p>Nothing. There is no sign-up, no tracking and no crash reporter. The app has nowhere to send your data.</p>
+
+      <h2>Where your data lives</h2>
+      <p>
+        Brands, settings, logins, chats, drafts and media lists are files in the app's own folder on your computer
+        (<code>%APPDATA%\TrendDeck</code> on Windows). Site logins are kept per brand, the same way a browser keeps
+        them. Saved passwords are locked with your system keychain. Deleting a brand deletes its data, and deleting
+        the folder deletes everything.
+      </p>
+
+      <h2>What goes out over the network</h2>
+      <ul>
+        <li><b>Sites you open.</b> A site tab is a normal browser tab, so the site sees what it would in any browser.</li>
+        <li>
+          <b>Trends.</b> The app asks Reddit, YouTube, Google Trends and TikTok for your keywords, from your own
+          session.
+        </li>
+        <li>
+          <b>Update check.</b> The app asks GitHub for the latest version file. Nothing about you goes with it, and you
+          can turn it off in Settings.
+        </li>
+        <li><b>Ad block lists.</b> Public filter lists are downloaded about once a day.</li>
+        <li>
+          <b>Your AI agent.</b> When you send a chat message, the agent you picked gets it and works through its own
+          provider, under that provider's terms.
+        </li>
+      </ul>
+
+      <h2>What AI agents can see</h2>
+      <p>
+        Agents only run when you send a message, and only for the brand that chat is for. They see pages only on sites
+        you allowed. They never get cookies, saved logins, password fields or other brands, and they get nothing on
+        sign-in pages. When an agent needs to sign in, the app fills the login itself and the agent only hears how it
+        went. Before anything is posted, the app shows you the post on the site and you press Post yourself.
+      </p>
+
+      <h2>This website</h2>
+      <p>
+        This site has no cookies, no analytics and no forms. It is hosted on Cloudflare, which keeps standard server
+        logs. The download button gets the installer from GitHub.
+      </p>
+
+      <h2>Questions</h2>
+      <p>
+        The app is open source, so every claim here can be checked in the code. Open an issue on
+        <a href="https://github.com/JoshWright22/TrendDeck/issues">GitHub</a> for anything this page doesn't answer.
+      </p>
+    </main>
+
+    <footer class="footer">
+      <a class="wordmark" href="/">
+        <img src="/assets/logo.svg" alt="" width="28" height="28" />
+        <span>TrendDeck</span>
+      </a>
+      <nav>
+        <a href="https://github.com/JoshWright22/TrendDeck">GitHub</a>
+        <a href="/privacy">Privacy</a>
+        <a href="https://github.com/JoshWright22/TrendDeck/blob/main/LICENSE">MIT</a>
+      </nav>
+    </footer>
+  </body>
+</html>
