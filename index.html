@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TrendDeck: your brands, one table</title>
+    <meta
+      name="description"
+      content="TrendDeck is an open source marketing desktop for creators. Every brand gets its own workspace with every account logged in at once, what's rising in your niche, and a chat pane that turns trends into posts."
+    />
+    <meta name="theme-color" content="#0E0E10" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TrendDeck" />
+    <meta property="og:description" content="Every brand, every account, every trend. One table." />
+    <meta property="og:image" content="https://joshwright22.github.io/TrendDeck-Web/assets/banner.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%assets/logo.svg" />
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+      <symbol id="spark" viewBox="0 0 16 16">
+        <path d="M8 .8l2.025 5.175L15.2 8l-5.175 2.025L8 15.2l-2.025-5.175L.8 8l5.175-2.025z" />
+      </symbol>
+    </svg>
+
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="table" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="wordmark" href="#top" aria-label="TrendDeck, back to top">
+        <img src="%BASE_URL%assets/logo.svg" alt="" width="28" height="28" />
+        <span>TrendDeck</span>
+      </a>
+      <nav class="topnav" aria-label="Links">
+        <a class="pill pill-sm" href="https://github.com/JoshWright22/TrendDeck">GitHub</a>
+        <a class="pill pill-sm" href="#play">Download</a>
+      </nav>
+    </header>
+
+    <nav class="dots" aria-label="Cards in the hand">
+      <a href="#brands" data-dot="brands"><span class="sr">1. Brands</span></a>
+      <a href="#accounts" data-dot="accounts"><span class="sr">2. Every account at once</span></a>
+      <a href="#trends" data-dot="trends"><span class="sr">3. Trends</span></a>
+      <a href="#chat" data-dot="chat"><span class="sr">4. Chat</span></a>
+      <a href="#posting" data-dot="posting"><span class="sr">5. Posting</span></a>
+      <a href="#extras" data-dot="extras"><span class="sr">6. Also in the hand</span></a>
+    </nav>
+
+    <div class="deck" aria-hidden="true"><i></i><i></i><i></i></div>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-hand">
+          <img
+            class="hand"
+            src="%BASE_URL%assets/logo.svg"
+            alt="The TrendDeck logo: a hand of three cards, indigo, pink and teal"
+            width="352"
+            height="352"
+          />
+        </div>
+        <h1>Your brands. <span class="dim">One table.</span></h1>
+        <p class="lede">
+          TrendDeck is a marketing desktop for creators. Every brand you run gets its own workspace: every account
+          logged in at once, what's rising in your niche, and a chat pane that turns trends into posts.
+        </p>
+        <div class="cta">
+          <a class="pill pill-teal" href="#play">Deal yourself in</a>
+          <a class="pill" href="https://github.com/JoshWright22/TrendDeck">See it on GitHub</a>
+        </div>
+        <p class="hint"><svg class="spark"><use href="#spark" /></svg>Free and open source. Scroll to deal.</p>
+      </section>
+
+      <!-- 1 -->
+      <section class="deal" id="brands" data-step="brands">
+        <div class="deal-text">
+          <p class="kicker"><span class="num">1 / 6</span><span class="tag">In the app now</span></p>
+          <h2>One brand, one card.</h2>
+          <p>
+            Each brand has its own logins, niche keywords and recommendations. Switching is one click, and nothing
+            follows you across.
+          </p>
+          <p class="try">Pick a card to switch brands.</p>
+        </div>
+        <div class="slot">
+          <article class="card" data-card="brands" aria-label="Brands">
+            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
+            <div class="card-face">
+              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
+              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
+              <h3 class="card-head"><span class="rank">1</span>Brands</h3>
+              <div class="fan" role="group" aria-label="Your brands">
+                <button type="button" data-brand="pixel" aria-pressed="false"><b>PF</b><span>Pixel Forge</span></button>
+                <button type="button" data-brand="loaf" aria-pressed="true"><b>LL</b><span>Loaf Lab</span></button>
+                <button type="button" data-brand="trail" aria-pressed="false"><b>TM</b><span>Trail Mutt</span></button>
+              </div>
+              <div class="brand-panels" aria-live="polite">
+                <div class="brand-panel" data-panel="pixel" hidden>
+                  <p class="brand-name">Pixel Forge <span>indie games</span></p>
+                  <ul class="accts">
+                    <li><i class="site">YT</i><span>YouTube</span><em>@pixelforge</em></li>
+                    <li><i class="site">X</i><span>X</span><em>@pixelforge</em></li>
+                    <li><i class="site">R</i><span>Reddit</span><em>u/pixel_forge</em></li>
+                    <li><i class="site">TT</i><span>TikTok</span><em>@pixel.forge</em></li>
+                  </ul>
+                </div>
+                <div class="brand-panel" data-panel="loaf">
+                  <p class="brand-name">Loaf Lab <span>home baking</span></p>
+                  <ul class="accts">
+                    <li><i class="site">IG</i><span>Instagram</span><em>@loaflab</em></li>
+                    <li><i class="site">TT</i><span>TikTok</span><em>@loaf.lab</em></li>
+                    <li><i class="site">YT</i><span>YouTube</span><em>@loaflabbakes</em></li>
+                    <li><i class="site">R</i><span>Reddit</span><em>u/loaflab</em></li>
+                  </ul>
+                </div>
+                <div class="brand-panel" data-panel="trail" hidden>
+                  <p class="brand-name">Trail Mutt <span>hiking with dogs</span></p>
+                  <ul class="accts">
+                    <li><i class="site">IG</i><span>Instagram</span><em>@trailmutt</em></li>
+                    <li><i class="site">YT</i><span>YouTube</span><em>@trailmutt</em></li>
+                    <li><i class="site">X</i><span>X</span><em>@trail_mutt</em></li>
+                    <li><i class="site">TT</i><span>TikTok</span><em>@trailmutt.co</em></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="deal" id="accounts" data-step="accounts">
+        <div class="deal-text">
+          <p class="kicker"><span class="num">2 / 6</span><span class="tag">In the app now</span></p>
+          <h2>Every account on one table.</h2>
+          <p>
+            Each brand gets its own browser session. Two brands can be logged into two different accounts on the same
+            site and they never mix.
+          </p>
+          <p class="try">Flip between two brands. Same sites, different logins.</p>
+        </div>
+        <div class="slot">
+          <article class="card" data-card="accounts" aria-label="Every account at once">
+            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
+            <div class="card-face">
+              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
+              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
+              <h3 class="card-head"><span class="rank">2</span>Every account at once</h3>
+              <div class="seg" role="group" aria-label="Brand">
+                <button type="button" class="pill pill-sm" data-set="pixel" aria-pressed="true">Pixel Forge</button>
+                <button type="button" class="pill pill-sm" data-set="loaf" aria-pressed="false">Loaf Lab</button>
+              </div>
+              <div aria-live="polite">
+                <ul class="tiles" data-tiles="pixel">
+                  <li><i class="site">R</i><b>Reddit</b><span class="state on">u/pixel_forge</span></li>
+                  <li><i class="site">X</i><b>X</b><span class="state on">@pixelforge</span></li>
+                  <li><i class="site">IG</i><b>Instagram</b><span class="state">logged out</span></li>
+                  <li><i class="site">TT</i><b>TikTok</b><span class="state on">@pixel.forge</span></li>
+                  <li><i class="site">YT</i><b>YouTube</b><span class="state on">@pixelforge</span></li>
+                  <li><i class="site">ST</i><b>YT Studio</b><span class="state on">@pixelforge</span></li>
+                </ul>
+                <ul class="tiles" data-tiles="loaf" hidden>
+                  <li><i class="site">R</i><b>Reddit</b><span class="state on">u/loaflab</span></li>
+                  <li><i class="site">X</i><b>X</b><span class="state">logged out</span></li>
+                  <li><i class="site">IG</i><b>Instagram</b><span class="state on">@loaflab</span></li>
+                  <li><i class="site">TT</i><b>TikTok</b><span class="state on">@loaf.lab</span></li>
+                  <li><i class="site">YT</i><b>YouTube</b><span class="state on">@loaflabbakes</span></li>
+                  <li><i class="site">ST</i><b>YT Studio</b><span class="state on">@loaflabbakes</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="deal" id="trends" data-step="trends">
+        <div class="deal-text">
+          <p class="kicker"><span class="num">3 / 6</span><span class="tag next">Coming next</span></p>
+          <h2>See it rise before it peaks.</h2>
+          <p>
+            One ranked feed of what's rising in your niche across Reddit, YouTube, Google Trends and TikTok. You get
+            the topics worth playing, not ten tabs of guessing.
+          </p>
+          <p class="try">Hover or tap a point for its growth score.</p>
+        </div>
+        <div class="slot">
+          <article class="card suit-teal" data-card="trends" aria-label="Trends">
+            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
+            <div class="card-face">
+              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
+              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
+              <h3 class="card-head"><span class="rank">3</span>Trends <small>desk setups, last 6 weeks</small></h3>
+              <div class="chart" data-chart></div>
+              <ol class="ranked">
+                <li class="hot"><span>Cozy desk setups</span><b>+212</b></li>
+                <li><span>Budget keyboards</span><b>+96</b></li>
+                <li><span>Cable management</span><b>+58</b></li>
+              </ol>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="deal" id="chat" data-step="chat">
+        <div class="deal-text">
+          <p class="kicker"><span class="num">4 / 6</span><span class="tag next">Coming next</span></p>
+          <h2>Turn a trend into a post.</h2>
+          <p>
+            Ask for ideas, outlines, titles and posts. Chat already knows your brand and what's trending, and it runs
+            on the subscriptions you already pay for.
+          </p>
+          <p class="try">Watch one trend become a title and a post.</p>
+        </div>
+        <div class="slot">
+          <article class="card" data-card="chat" aria-label="Chat">
+            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
+            <div class="card-face">
+              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
+              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
+              <h3 class="card-head"><span class="rank">4</span>Chat</h3>
+              <div class="chatlog" data-chat>
+                <p class="msg me">Cozy desk setups are up 212. Give me a video title.</p>
+                <p class="msg bot">I rebuilt my desk for $50 and it beats my $900 one</p>
+                <p class="msg me">Good. Now the post.</p>
+                <p class="msg bot">
+                  Spent $50 and one Saturday on my desk. Before and after drops at 6. Tell me which side wins.
+                </p>
+              </div>
+              <button type="button" class="pill pill-sm replay" data-replay>Deal it again</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="deal" id="posting" data-step="posting">
+        <div class="deal-text">
+          <p class="kicker"><span class="num">5 / 6</span><span class="tag next">Coming next</span></p>
+          <h2>Write it once. Play it everywhere.</h2>
+          <p>
+            TrendDeck posts for you through your logged-in tabs, or through official APIs if you'd rather. One draft
+            goes out to every platform you pick.
+          </p>
+          <p class="try">Hit post and watch the draft go round.</p>
+        </div>
+        <div class="slot">
+          <article class="card suit-yellow" data-card="posting" aria-label="Posting">
+            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
+            <div class="card-face">
+              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
+              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
+              <h3 class="card-head"><span class="rank">5</span>Posting</h3>
+              <div class="post-stage" data-post>
+                <div class="draft">
+                  <b>Draft</b>
+                  <span>I rebuilt my desk for $50</span>
+                  <i></i><i></i><i></i>
+                </div>
+                <ul class="targets">
+                  <li><i class="site">X</i><span>X</span><svg class="spark win"><use href="#spark" /></svg></li>
+                  <li><i class="site">IG</i><span>Instagram</span><svg class="spark win"><use href="#spark" /></svg></li>
+                  <li><i class="site">TT</i><span>TikTok</span><svg class="spark win"><use href="#spark" /></svg></li>
+                  <li><i class="site">YT</i><span>YouTube</span><svg class="spark win"><use href="#spark" /></svg></li>
+                </ul>
+                <p class="post-status" aria-live="polite" data-post-status>Ready for 4 platforms</p>
+                <button type="button" class="pill pill-teal pill-sm" data-post-go>Post it</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="deal" id="extras" data-step="extras">
+        <div class="deal-text">
+          <p class="kicker"><span class="num">6 / 6</span><span class="tag">Some now, some next</span></p>
+          <h2>Also in the hand.</h2>
+          <p>Four more cards you didn't ask for and will end up using every day.</p>
+          <p class="try">Flip each one over.</p>
+        </div>
+        <div class="slot">
+          <article class="card" data-card="extras" aria-label="Also in the hand">
+            <div class="card-back" aria-hidden="true"><svg class="spark"><use href="#spark" /></svg></div>
+            <div class="card-face">
+              <svg class="spark corner tl" aria-hidden="true"><use href="#spark" /></svg>
+              <svg class="spark corner br" aria-hidden="true"><use href="#spark" /></svg>
+              <h3 class="card-head"><span class="rank">6</span>Also in the hand</h3>
+              <div class="minis">
+                <button type="button" class="mini" aria-pressed="false">
+                  <span class="mini-front"><svg class="spark"><use href="#spark" /></svg><b>Ad blocker</b></span>
+                  <span class="mini-back">Built in. No extension to hunt down and install.</span>
+                </button>
+                <button type="button" class="mini" aria-pressed="false">
+                  <span class="mini-front"><svg class="spark"><use href="#spark" /></svg><b>Phone emulator</b></span>
+                  <span class="mini-back">For the features sites only put in their apps. No phone needed.</span>
+                </button>
+                <button type="button" class="mini" aria-pressed="false">
+                  <span class="mini-front"><svg class="spark"><use href="#spark" /></svg><b>Fast on slow laptops</b></span>
+                  <span class="mini-back">Made to stay quick on a cheap laptop. No waiting on it.</span>
+                </button>
+                <button type="button" class="mini" aria-pressed="false">
+                  <span class="mini-front"><svg class="spark"><use href="#spark" /></svg><b>Local first</b></span>
+                  <span class="mini-back">Everything is saved on your computer. No account, no server.</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="play" id="play">
+        <p class="kicker"><svg class="spark"><use href="#spark" /></svg><span class="num">That's the hand</span></p>
+        <h2>Play your hand.</h2>
+        <p class="lede">
+          TrendDeck is free and open source. There's no installer yet, so for now you run it from source. You need
+          <a href="https://nodejs.org">Node.js</a> 22.12 or newer.
+        </p>
+        <div class="install">
+          <div class="install-bar">
+            <span>Terminal</span>
+            <button type="button" class="pill pill-sm" data-copy>Copy</button>
+          </div>
+          <pre><code data-install>git clone https://github.com/JoshWright22/TrendDeck.git
+cd TrendDeck
+npm install
+npm run dev</code></pre>
+        </div>
+        <p class="fine">The first npm install also downloads Electron, so it takes a minute.</p>
+        <div class="cta">
+          <a class="pill pill-teal" href="https://github.com/JoshWright22/TrendDeck">Get it on GitHub</a>
+          <a class="pill" href="https://github.com/JoshWright22/TrendDeck/blob/main/LICENSE">MIT license</a>
+        </div>
+        <p class="fine">If it ever goes the wrong way, fork it and build the one you want.</p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>TrendDeck is MIT licensed.</span>
+      <a href="https://github.com/JoshWright22/TrendDeck">App source</a>
+      <a href="https://github.com/JoshWright22/TrendDeck-Web">Site source</a>
+      <button type="button" class="linkish" data-mode-toggle hidden>Lite mode</button>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
