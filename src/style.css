@@ -360,18 +360,6 @@ svg.spark {
   height: 14px;
 }
 
-.soon {
-  position: absolute;
-  right: 48px;
-  top: 17px;
-  padding: 5px 9px;
-  border: 1.5px solid currentColor;
-  border-radius: 99px;
-  font: 500 11px/1 var(--body);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.75;
-}
 
 .feature h3 {
   font: 800 clamp(30px, 3.4vw, 39px) / 1 var(--display);

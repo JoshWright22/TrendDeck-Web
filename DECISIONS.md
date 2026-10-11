@@ -19,7 +19,7 @@ Calls made while rebuilding the page, so they are easy to undo.
 
 - Eight cards in three columns, four of them two wide, so every row is full. The mockup had a hole in row two.
 - Glyphs and colors follow the mockup where it shows them. Ad blocker is YouTube on pink, not the Google mark, since Google is a teal card in the hero. Phone emulator is Snapchat on yellow, Fast on slow laptops is Bluesky on indigo.
-- Trends, Chat, Posting, Ad blocker and Phone emulator have a small "Soon" chip. The app readme lists them as coming next and the page shouldn't say otherwise.
+- No "coming soon" chips on feature cards (Josh 10/11).
 - Two columns under 860 px, one under 600 px.
 
 ## Agents
