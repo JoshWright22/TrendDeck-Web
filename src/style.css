@@ -232,7 +232,8 @@ svg.spark {
   padding: 0 16px;
   text-align: center;
   font: 800 clamp(26px, 4.2vw, 46px) / 1 var(--display);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.055em;
+  word-spacing: 0.14em;
   color: var(--white);
 }
 
@@ -261,12 +262,14 @@ svg.spark {
 
 .section h2 {
   font: 800 clamp(38px, 6.4vw, 70px) / 1 var(--display);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.055em;
+  word-spacing: 0.14em;
   color: var(--white);
 }
 
 .lead {
   margin-top: 18px;
+  text-wrap: balance;
   font-size: clamp(16px, 1.6vw, 19px);
   line-height: 1.4;
   color: var(--smoke);
@@ -372,7 +375,8 @@ svg.spark {
 
 .feature h3 {
   font: 800 clamp(30px, 3.4vw, 39px) / 1 var(--display);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.055em;
+  word-spacing: 0.14em;
 }
 
 .feature p {
@@ -432,6 +436,7 @@ svg.spark {
 .agent h3 {
   font: 800 21px/1 var(--display);
   letter-spacing: -0.05em;
+  word-spacing: 0.12em;
 }
 
 .agent code {
@@ -460,6 +465,7 @@ svg.spark {
   color: var(--felt);
   font: 800 clamp(20px, 2.4vw, 26px) / 1 var(--display);
   letter-spacing: -0.04em;
+  word-spacing: 0.1em;
   text-decoration: none;
   box-shadow: 0 14px 40px rgba(59, 70, 164, 0.55);
   transition: transform 0.6s var(--spring);
