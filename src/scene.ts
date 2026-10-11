@@ -196,7 +196,7 @@ export async function createOrbit(stage: HTMLElement, opts: { onSlow: () => void
   // stiff spring with little damping, so the lean overshoots and wobbles into place
   const STIFF = 90;
   const DAMP = 6.5;
-  const MAX_LEAN = [0.2, 0.3];
+  const MAX_LEAN = [0.12, 0.3];
   const tilt = { x: 0, y: 0, vx: 0, vy: 0 };
   function spring(dt: number): void {
     const tx = aim.y * MAX_LEAN[0];

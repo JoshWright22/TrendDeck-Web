@@ -75,14 +75,14 @@ function noise(n: number): number {
 function ringSlots(faces: Face[], count: number, ring: 0 | 1, start: number): Slot[] {
   return Array.from({ length: count }, (_, i) => {
     const seed = i + ring * 40;
-    // opposite cards share their reach and lift so the outer pairs stay exactly opposite
+    // opposite cards share their reach and mirror their lift, so the outer pairs stay exactly opposite
     const pair = (i % (count / 2)) + ring * 40;
     return {
       face: faces[i % faces.length],
       ring,
       angle: start + (i / count) * Math.PI * 2,
       reach: 1 + noise(pair + 0.3) * 0.05,
-      lift: noise(pair + 0.7) * 0.04,
+      lift: noise(pair + 0.7) * 0.04 * (i < count / 2 ? 1 : -1),
       roll: noise(seed + 0.1) * 0.24,
       pitch: noise(seed + 0.5) * 0.14,
     };
@@ -112,14 +112,14 @@ const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v
 
 export function layout(width: number, height: number): Layout {
   const aspect = width / height;
-  const outer = Math.min(width * (aspect < 1 ? 0.46 : 0.4), height * 0.7);
+  const outer = Math.min(width * (aspect < 1 ? 0.44 : 0.4), height * 0.7);
   // tall screens get a steeper ring so the orbit fills more than a thin strip
   const tilt = (clamp(16 + (1.3 - aspect) * 40, 16, 48) * Math.PI) / 180;
   return {
     width,
     height,
     radius: [outer, outer * 0.56],
-    card: [clamp(outer * 0.075, 27, 46), clamp(outer * 0.13, 40, 80)],
+    card: [clamp(outer * 0.075, 27, 46), clamp(outer * 0.122, 38, 76)],
     tilt: [tilt, tilt + 0.1],
     roll: [-0.05, 0.07],
     dist: outer * 2.6,
