@@ -223,32 +223,31 @@ svg.spark {
   }
 }
 
-.tagline {
+.hero-cta {
   position: absolute;
   z-index: 2;
   left: 0;
   right: 0;
-  bottom: clamp(70px, 10.5vh, 104px);
+  bottom: clamp(28px, 5vh, 56px);
   padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 2.4vh, 24px);
   text-align: center;
+}
+
+.tagline {
+  margin: 0;
   font: 800 clamp(26px, 4.2vw, 46px) / 1 var(--display);
   letter-spacing: -0.055em;
   word-spacing: 0.14em;
   color: var(--white);
 }
 
-.scroll-hint {
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  bottom: 28px;
-  text-align: center;
-  font: 500 12px/1 var(--body);
-  letter-spacing: 0.32em;
-  text-indent: 0.32em;
-  text-transform: uppercase;
-  color: #7c84c8;
+.pill-hero {
+  padding: 16px 30px;
+  font-size: clamp(17px, 1.8vw, 21px);
 }
 
 /* sections */
