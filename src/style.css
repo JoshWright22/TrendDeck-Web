@@ -169,7 +169,7 @@ html.full .table::after {
   justify-content: space-between;
   height: 60px;
   padding: 0 var(--pad);
-  background: linear-gradient(var(--felt) 20%, rgba(14, 14, 16, 0));
+  background: linear-gradient(var(--felt) 60%, rgba(14, 14, 16, 0));
 }
 .wordmark {
   display: flex;
@@ -257,8 +257,8 @@ html.full .table::after {
 /* the deck cards are dealt from */
 .deck {
   position: fixed;
-  right: var(--pad);
-  bottom: 22px;
+  right: 14px;
+  bottom: 18px;
   z-index: 4;
   width: 50px;
   aspect-ratio: 5 / 7;
@@ -644,8 +644,9 @@ html.full .card.is-dealt {
 .tiles {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.7em;
-  margin-top: 1em;
+  grid-auto-rows: 6.4em;
+  gap: 0.8em;
+  margin-top: 1.2em;
 }
 .tiles li {
   display: grid;
